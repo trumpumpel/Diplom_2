@@ -12,11 +12,11 @@ class TestReceivingOrdersFromUser:
         token = response.json()['accessToken']
         headers = {'Authorization': f'{token}'}
         response = requests.get(f'{TestUrlData.URL}{TestUrlData.PATH_ORDERS}', headers=headers)
-        assert response.status_code == 200
+        assert '"success":true' in response.text
         requests.delete(f'{TestUrlData.URL}{TestUrlData.PATH_USER}', headers=headers)
 
     @allure.title('Тестируем функционал создания заказа не авторизировнным пользователем')
     def test_receiving_orders_from_not_authorized_user(self):
         headers = {'Authorization': f'{TestAuthData.token}'}
         response = requests.get(f'{TestUrlData.URL}{TestUrlData.PATH_ORDERS}', headers=headers)
-        assert response.status_code == 401
+        assert '"success":false' in response.text
