@@ -4,7 +4,7 @@ from data.auth_data import TestAuthData
 from data.url_data import TestUrlData
 
 
-@allure.title('Тестируем функционал получение заказов конкретного пользователя')
+@allure.feature('Тестируем функционал получение заказов конкретного пользователя')
 class TestReceivingOrdersFromUser:
     @allure.title('Тестируем функционал создания заказа авторизировнным пользователем')
     def test_receiving_orders_from_authorized_user(self):

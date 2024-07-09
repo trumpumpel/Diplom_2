@@ -9,7 +9,7 @@ from conftest import user_registration_and_delete
 from data.auth_data import TestAuthData
 
 
-@allure.title('Тестируем функционал изменения данных пользователя')
+@allure.feature('Тестируем функционал изменения данных пользователя')
 class TestChangingUserData:
     @allure.title('Тестируем функционал изменения данных пользователя с авторизацией')
     def test_changing_user_data_with_registration(self):

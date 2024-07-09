@@ -8,7 +8,7 @@ from conftest import user_registration_and_delete
 from data.auth_data import TestAuthData
 
 
-@allure.title('Тестируем функционал создания заказа')
+@allure.feature('Тестируем функционал создания заказа')
 class TestCreatingAnOrder:
     @allure.title('Тестируем функционал создания заказа с авторизацией')
     def test_creating_order_with_authorization(self, user_registration_and_delete):

@@ -5,7 +5,7 @@ from data.auth_data import TestAuthData
 from data.url_data import TestUrlData
 
 
-@allure.title('Тестируем функционал логина пользователя')
+@allure.feature('Тестируем функционал логина пользователя')
 class TestLoginUser:
     @allure.title('Тестируем создание пользователя')
     def test_login_with_email_and_password(self, user_registration_and_delete):

@@ -6,7 +6,7 @@ from data.auth_data import TestAuthData
 from data.url_data import TestUrlData
 
 
-@allure.title('Тестируем функционал создания пользователя')
+@allure.feature('Тестируем функционал создания пользователя')
 class TestCreatingUser:
     @allure.title('Тестируем создание уникального пользователя')
     def test_register_courier(self):
