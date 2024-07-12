@@ -9,10 +9,15 @@ class TestReceivingOrdersFromUser:
     @allure.title('Тестируем функционал создания заказа авторизировнным пользователем')
     def test_receiving_orders_from_authorized_user(self, user_registration_and_delete):
         response = requests.get(f'{TestUrlData.URL}{TestUrlData.PATH_ORDERS}', headers=self.headers)
-        assert '"success":true' in response.text
+        total = response.json()['total']
+        totalToday = response.json()['totalToday']
+        assert '{"success":true,"orders":[],"total":f'
+        {total}
+        ',"totalToday":f'
+        {totalToday}
+        '}' == response.text
 
     @allure.title('Тестируем функционал создания заказа не авторизировнным пользователем')
     def test_receiving_orders_from_not_authorized_user(self):
-        headers = {'Authorization': f'{TestAuthData.token}'}
-        response = requests.get(f'{TestUrlData.URL}{TestUrlData.PATH_ORDERS}', headers=headers)
-        assert '"success":false' in response.text
+        response = requests.get(f'{TestUrlData.URL}{TestUrlData.PATH_ORDERS}', headers=TestAuthData.headers)
+        assert '{"success":false,"message":"You should be authorised"}' == response.text

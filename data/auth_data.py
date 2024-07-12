@@ -2,7 +2,7 @@ class TestAuthData:
     lg = "murfl@te.com"
     ps = '234634'
     fn = "Burfl"
-    token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NzdlN2IwOWVkMjgwMDAxYjQ0ODQzYyIsImlhdCI6MTcxOTEzNDEyOCwiZXhwIjoxNzE5MTM1MzI4fQ.qtM72wEm4zgHDhtqoHXbuM4a0rFgEOELo4QRz0pYVdI'
+    headers = {}
 
     dat = {
         "email": "pulyad@tu.com",
