@@ -7,11 +7,8 @@ from data.url_data import TestUrlData
 @allure.feature('Тестируем функционал создания пользователя')
 class TestCreatingUser:
     @allure.title('Тестируем создание уникального пользователя')
-    def test_register_courier(self):
-        response = requests.post(f'{TestUrlData.URL}{TestUrlData.PATH_REG}', data=TestAuthData.dat)
-        token = response.json()['accessToken']
-        headers = {'Authorization': f'{token}'}
-        response = requests.delete(f'{TestUrlData.URL}{TestUrlData.PATH_USER}', headers=headers)
+    def test_register_courier(self, user_registration_and_delete):
+        response = requests.delete(f'{TestUrlData.URL}{TestUrlData.PATH_USER}', headers=self.headers)
         assert '"success":true' in response.text
 
     @allure.title('Тестируем создание пользователя, который уже зарегистрирован')

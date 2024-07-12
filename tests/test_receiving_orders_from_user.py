@@ -7,13 +7,9 @@ from data.url_data import TestUrlData
 @allure.feature('Тестируем функционал получение заказов конкретного пользователя')
 class TestReceivingOrdersFromUser:
     @allure.title('Тестируем функционал создания заказа авторизировнным пользователем')
-    def test_receiving_orders_from_authorized_user(self):
-        response = requests.post(f'{TestUrlData.URL}{TestUrlData.PATH_REG}', data=TestAuthData.dat)
-        token = response.json()['accessToken']
-        headers = {'Authorization': f'{token}'}
-        response = requests.get(f'{TestUrlData.URL}{TestUrlData.PATH_ORDERS}', headers=headers)
+    def test_receiving_orders_from_authorized_user(self, user_registration_and_delete):
+        response = requests.get(f'{TestUrlData.URL}{TestUrlData.PATH_ORDERS}', headers=self.headers)
         assert '"success":true' in response.text
-        requests.delete(f'{TestUrlData.URL}{TestUrlData.PATH_USER}', headers=headers)
 
     @allure.title('Тестируем функционал создания заказа не авторизировнным пользователем')
     def test_receiving_orders_from_not_authorized_user(self):
